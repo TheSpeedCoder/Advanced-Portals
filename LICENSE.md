@@ -25,7 +25,8 @@ changes to the functionality of the plugin. For example fixing a small
 bug would not be deemed significant or changing the name of a command.
 
 Private modifications do not have to follow any rules with how large or small
-the modifications have to be.
+the modifications have to be but please do not try to pretend that you made the base yourself.
+Some sort of credit would be appreciated but is not neccesary :)
 
 SUMMARY
 1. You can modify
