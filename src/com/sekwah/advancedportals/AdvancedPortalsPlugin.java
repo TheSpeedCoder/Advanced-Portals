@@ -1,12 +1,7 @@
 package com.sekwah.advancedportals;
 
-import com.sekwah.advancedportals.DataCollector.DataCollector;
 import com.sekwah.advancedportals.compat.CraftBukkit;
-import com.sekwah.advancedportals.destinations.*;
-import com.sekwah.advancedportals.effects.WarpEffects;
-import com.sekwah.advancedportals.listeners.*;
 import com.sekwah.advancedportals.metrics.Metrics;
-import com.sekwah.advancedportals.portals.Portal;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -35,7 +30,11 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
             // Failed to submit the stats :-(
         }
 
+        String packageName = getServer().getClass().getPackage().getName();
+        String[] packageSplit = packageName.split("\\.");
+        String version = packageSplit[packageSplit.length - 1];
 
+        this.compat = new CraftBukkit(this, version);
 
         this.getServer().getConsoleSender().sendMessage("\u00A7aAdvanced portals have been successfully enabled!");
     }
