@@ -9,6 +9,10 @@ import java.io.IOException;
 /**
  * Advanced Portals plugin for minecraft. Specifically bukkit/spigot servers.
  *
+ * Try to keep bukkit references generally in the same files. All the registry stuff should try to not
+ * use direct bukkit references unless needed for the data. This will make it easier for updating and also
+ * cross branches/forks such as spigot versions.
+ *
  * The purpose of the new recode of this plugin is to make it efficient, more modular than the last
  * and also allow for developers to make addons to interact with plugins or server networks.
  *
