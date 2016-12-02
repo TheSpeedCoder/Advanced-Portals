@@ -24,6 +24,10 @@ public class CraftBukkit {
     public CraftBukkit(AdvancedPortalsPlugin plugin, String version) throws ClassNotFoundException, NoSuchMethodException, NoSuchFieldException {
         this.plugin = plugin;
         
+        this.setupMessagePacket(version);
+    }
+
+    private void setupMessagePacket(String version) throws ClassNotFoundException, NoSuchMethodException, NoSuchFieldException {
         // Get the methods and such to invoke later when running the actual plugin
         String craftBukkitPackage = "org.bukkit.craftbukkit." + version + ".";
         String minecraftPackage = "net.minecraft.server." + version + ".";
