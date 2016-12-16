@@ -18,6 +18,8 @@ import java.io.IOException;
  *
  * Could make a sponge port but it is not a priority for now at least.
  *
+ * Looking over the license but it seems the GNU is best for now. MIT seemed too vague and not specific enough.
+ *
  * @author sekwah41
  */
 public class AdvancedPortalsPlugin extends JavaPlugin {
