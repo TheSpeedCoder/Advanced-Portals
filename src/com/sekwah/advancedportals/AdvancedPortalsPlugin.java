@@ -38,11 +38,18 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
         String[] packageSplit = packageName.split("\\.");
         String version = packageSplit[packageSplit.length - 1];
 
-        this.compat = new CraftBukkit(this, version);
+        try {
+            this.compat = new CraftBukkit(this, version);
+        } catch (ClassNotFoundException | NoSuchMethodException | NoSuchFieldException e) {
+            e.printStackTrace();
+            this.getLogger().warning("This version of craftbukkit is not yet supported or something went wrong, please" +
+                    " post this message with the version number and the above stacktrace in an issue on GitHub v:" + version);
+            this.getLogger().warning("https://github.com/sekwah41/Advanced-Portals/issues");
+            this.setEnabled(false);
+        }
 
         this.getServer().getConsoleSender().sendMessage("\u00A7aAdvanced portals have been successfully enabled!");
     }
-
 
     public void onDisable() {
         this.getServer().getConsoleSender().sendMessage("\u00A7cAdvanced portals are being disabled!");
