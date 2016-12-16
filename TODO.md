@@ -13,3 +13,6 @@ Destination Command
 Portal Command
 
 Bungee Support Set Locations
+
+Keept the data storage for destinations and portals generally the same
+but modify it a little to be nicer for the tag registry.
