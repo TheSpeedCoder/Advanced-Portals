@@ -3,5 +3,11 @@
 # I suggest if you want to change text in english either make a new called en_US
 # or en_GB2 so when updates come out new text can still default back to the old files.
 #
+# The format of included strings is %(number of argument)$s
+# So the order of variables being inserted into the string is not a set order. Just like minecraft
+#
+# For colors use \u00A or § (can be entered by holding alt and pressing 2 then 1 on the numpad)
+#
 # TODO check if the files are loaded from the config folder and if not how it does it in bukkit.
 #
+portalplugin.name=Advanced Portals
