@@ -1,0 +1,7 @@
+# Same as default minecraft lang files but can handle comments.
+# Anything not set in translations will be defaulted back to the en_GB file.
+# I suggest if you want to change text in english either make a new called en_US
+# or en_GB2 so when updates come out new text can still default back to the old files.
+#
+# TODO check if the files are loaded from the config folder and if not how it does it in bukkit.
+#

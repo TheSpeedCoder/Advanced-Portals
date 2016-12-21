@@ -27,7 +27,11 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
     // Class which handles calls to code which is located in craftbukkit.
     public CraftBukkit compat = null;
 
+    private static AdvancedPortalsPlugin INSTANCE;
+
     public void onEnable() {
+
+       this.INSTANCE = this;
 
         try {
             Metrics metrics = new Metrics(this);
@@ -55,6 +59,10 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
 
     public void onDisable() {
         this.getServer().getConsoleSender().sendMessage("\u00A7cAdvanced portals are being disabled!");
+    }
+
+    public static AdvancedPortalsPlugin getInstance(){
+        return INSTANCE;
     }
 
 
