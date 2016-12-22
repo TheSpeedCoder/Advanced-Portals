@@ -11,6 +11,11 @@ PortalProtectionRadius: 5
 # This changes how long the show seletion lasts in seconds
 ShowSelectionShowDuration: 10
 
+# Language file to read from folder. Will auto add .lang and point to the folder.
+# Default will just load directly from the plugin and ignore any new files. This should not take long even if you
+# add a the same language name but it stops unneeded double loading if nothing is changed in the external en_GB
+language: default
+
 # This stops all water flowing inside a portal area(can be disabled if something like world edit is handelling the water flow or you dont want it active)
 #    you want to
 StopWaterFlow: true

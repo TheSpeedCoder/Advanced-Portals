@@ -13,6 +13,9 @@ import java.util.Scanner;
  * The language translation file for the game. Will always load english first
  * so that if the translations are missing any then they are still readable and can then be translated.
  * (Its better than a raw translate string)
+ *
+ * TODO add a loaddefault where it only loads from the plugins version of the data rather than paying attention to any
+ * possible changed versions in the lang folder.
  */
 public class Lang {
 
