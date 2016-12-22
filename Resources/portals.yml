@@ -2,7 +2,7 @@
 #  ExamplePortal:
 #    world: it will be the world name
 #    triggerblock: LAVA # will only be used if the hastriggerblock is true and can be id or text
-#    pos1: # dont mess with the data here, if you do it may stop the portal from working.
+#    pos1: # dont mess with the data here, if you do it may stop the portal from working and/or mess with other portals
 #      X:
 #      Y:
 #      Z:
@@ -10,10 +10,4 @@
 #      X:
 #      Y:
 #      Z:
-#    destination:
-#      issetpoint: true # if this was false point name would not be used and the coordinates would be saved here, it just adds more customisation.
-#      pointname: examplepoint # if issetpoint is false this wont be here and tppos will be.
-#      tppos:
-#        X:
-#        Y:
-#        Z:
+#    desti: examplepoint # if this is not set commands and such will still execute

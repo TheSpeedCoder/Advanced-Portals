@@ -1,6 +1,5 @@
 package com.sekwah.advancedportals.api.warphandler;
 
-import com.sekwah.advancedportals.portals.Portal;
 
 /**
  * Created by on 30/07/2016.
@@ -13,12 +12,12 @@ public class ActivationData {
 
     private WarpedStatus warpStatus = WarpedStatus.INACTIVE;
 
-    private Portal activePortal;
+    //private Portal activePortal;
 
-    public ActivationData(Portal portal){
+    /*public ActivationData(Portal portal){
         this.activePortal = portal;
     }
-
+*/
     public WarpedStatus getWarped(){
         return this.warpStatus;
     }

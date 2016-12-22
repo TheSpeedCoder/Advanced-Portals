@@ -1,4 +1,4 @@
-# Same as default minecraft lang files but can handle comments.
+# Same as default minecraft lang files but can handle comments if a # is the first character
 # Anything not set in translations will be defaulted back to the en_GB file.
 # I suggest if you want to change text in english either make a new called en_US
 # or en_GB2 so when updates come out new text can still default back to the old files.
@@ -7,7 +7,10 @@
 # So the order of variables being inserted into the string is not a set order. Just like minecraft
 #
 # For colors use \u00A or § (can be entered by holding alt and pressing 2 then 1 on the numpad)
+# http://minecraft.gamepedia.com/Formatting_codes
 #
 # TODO check if the files are loaded from the config folder and if not how it does it in bukkit.
 #
-portalplugin.name=Advanced Portals
+messageprefix.positive=\u00Aa[\u00AeAdvancedPortals\u00Aa]
+messageprefix.negative=\u00Ac[\u00A7AdvancedPortals\u00Ac]
+

@@ -2,6 +2,7 @@ package com.sekwah.advancedportals;
 
 import com.sekwah.advancedportals.compat.CraftBukkit;
 import com.sekwah.advancedportals.metrics.Metrics;
+import com.sekwah.advancedportals.util.Lang;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -31,7 +32,10 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
 
     public void onEnable() {
 
-       this.INSTANCE = this;
+        this.INSTANCE = this;
+
+        // Test for now to initialise the classes before its first use.
+        Lang.instance.translate("test.string");
 
         try {
             Metrics metrics = new Metrics(this);

@@ -1,0 +1,33 @@
+# Advanced Portals Config
+
+# To set this file back to its default state just delete it and reload the server or restart it!
+
+# Preferably an item and not a block but it shouldnt matter
+AxeItemId: IRON_AXE
+
+# How many blocks around the portals will be protected from griefing or destruction
+PortalProtectionRadius: 5
+
+# This changes how long the show seletion lasts in seconds
+ShowSelectionShowDuration: 10
+
+# This stops all water flowing inside a portal area(can be disabled if something like world edit is handelling the water flow or you dont want it active)
+#    you want to
+StopWaterFlow: true
+
+# WarpEffect
+# 0 = disabled(no particles)
+# 1 = Eye of ender explode effect(loads of portal particles)
+# adding more soon and may create some custom ones
+WarpParticles: 1
+
+# WarpSound generally suggested to keep the same as warpeffect but can usually be used for just the sound and no particle effects
+# 0 = disabled(no sound)
+# 1 = Enderman Warp Sound
+# adding more soon
+WarpSound: 1
+
+# How long after trying to enter a portal until the player can try to enter another. 0 or lower to deactivate.
+PortalCooldown: 5
+# How fast to throw them back, 0 or lower to disable throwback completely
+ThrowbackAmount: 0.7

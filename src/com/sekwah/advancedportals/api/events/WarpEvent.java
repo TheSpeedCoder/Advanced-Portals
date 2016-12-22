@@ -1,6 +1,5 @@
 package com.sekwah.advancedportals.api.events;
 
-import com.sekwah.advancedportals.portals.AdvancedPortal;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -18,15 +17,15 @@ public final class WarpEvent extends Event implements Cancellable {
 
     private Player player;
 
-    @SuppressWarnings("unused")
-    private AdvancedPortal portalData;
+    /*@SuppressWarnings("unused")
+    private AdvancedPortal portalData;*/
 
     private boolean hasWarped = false;
 
-    public WarpEvent(Player player, AdvancedPortal portalData) {
+    /*public WarpEvent(Player player, AdvancedPortal portalData) {
         this.player = player;
         this.portalData = portalData;
-    }
+    }*/
 
     public static HandlerList getHandlerList() {
         return handlers;
@@ -45,9 +44,9 @@ public final class WarpEvent extends Event implements Cancellable {
         cancelled = cancel;
     }
 
-    public AdvancedPortal getPortalData() {
+    /*public AdvancedPortal getPortalData() {
         return portalData;
-    }
+    }*/
 
     /**
      * This will return true if another plugin has warped the player(and set this to true)
