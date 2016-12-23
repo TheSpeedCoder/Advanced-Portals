@@ -3,6 +3,7 @@ package com.sekwah.advancedportals.util;
 import com.google.common.collect.Maps;
 import com.sekwah.advancedportals.AdvancedPortalsPlugin;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.Scanner;
@@ -19,7 +20,7 @@ import java.util.Scanner;
  */
 public class Lang {
 
-    public static final String DEFAULT_LANG = "en_GB";
+    public final String DEFAULT_LANG = "en_GB";
 
     public final Map<String, String> languageMap = Maps.<String, String>newHashMap();
 
@@ -29,15 +30,17 @@ public class Lang {
         injectTranslations(this, DEFAULT_LANG);
     }
 
-    private static void injectTranslations(Lang lang, String fileName) {
+    private void injectTranslations(Lang lang, String fileName) {
         try{
             //URL url = lang.getClass().getClassLoader().getResource("lang/" + fileName + ".lang");
             //System.out.println(url);
             //Map<String, String> newLangMap = lang.parseLang(url.openStream());
-            InputStream stream = loadResource(lang, "lang/" + fileName + ".lang");
+            InputStream stream = DefaultLoader.loadResource(lang, "lang/" + fileName + ".lang");
             if(stream != null){
                 Map<String, String> newLangMap = lang.parseLang(stream);
-                lang.languageMap.putAll(newLangMap);
+                if(newLangMap != null){
+                    lang.languageMap.putAll(newLangMap);
+                }
             }
         }
         catch(NullPointerException e){
@@ -47,44 +50,37 @@ public class Lang {
         }
     }
 
-    /**
-     * A method to try to grab the files from the plugin and if its in the plugin folder load from there instead.
-     *
-     * TODO add loading from the plugin folder first rather than straight from the plugin.
-     *
-     * @param lang
-     * @param location
-     * @return
-     */
-    private static InputStream loadResource(Lang lang, String location) {
-        try{
-            return lang.getClass().getClassLoader().getResourceAsStream(location);
-        }
-        catch(NullPointerException e){
-            e.printStackTrace();
-            AdvancedPortalsPlugin.getInstance().getLogger().warning("Could not load " + location + ". The file does" +
-                    "not exist or there has been an error reading the file.");
-            return null;
-        }
-    }
-
-    public static void loadLanguage(String fileName){
+    public void loadLanguage(String fileName){
         injectTranslations(instance, fileName);
     }
 
     private Map<String, String> parseLang(InputStream inputStream){
-        Scanner scanner = new Scanner(inputStream);
+        Scanner scanner = new Scanner(inputStream, "UTF-8");
+        getNextLine(scanner);
         String line = scanner.nextLine();
-        while(line != null){
+        while(scanner != null && line != null){
             System.out.println(line);
-            line = scanner.nextLine();
+
+            line = getNextLine(scanner);
             // TODO add split code at the first = and also conversion of strings/codes which are constants like colors.
+        }
+        try {
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private String getNextLine(Scanner scanner) {
+        if(scanner.hasNextLine()){
+            return scanner.nextLine();
         }
         return null;
     }
 
 
-    public static String translate(String s) {
+    public String translate(String s) {
         if(instance.languageMap.containsKey(s)){
             return instance.languageMap.get(s);
         }

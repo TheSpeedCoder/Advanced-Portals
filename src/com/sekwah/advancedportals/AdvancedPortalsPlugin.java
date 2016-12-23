@@ -2,6 +2,7 @@ package com.sekwah.advancedportals;
 
 import com.sekwah.advancedportals.compat.CraftBukkit;
 import com.sekwah.advancedportals.metrics.Metrics;
+import com.sekwah.advancedportals.util.DefaultLoader;
 import com.sekwah.advancedportals.util.Lang;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -34,8 +35,15 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
 
         this.INSTANCE = this;
 
+        // TODO add the config loaders from default spigot and use those to save default if easier.
+
+        /**
+         * If local files don't exist then included ones are copied into their locations.
+         */
+        DefaultLoader.copyDefaultFiles(false, "config.yml", "portals.yml", "destinations.yml");
+
         // Test for now to initialise the classes before its first use.
-        Lang.instance.translate("test.string");
+        System.out.println("Translation: " + Lang.instance.translate("test.string"));
 
         try {
             Metrics metrics = new Metrics(this);
