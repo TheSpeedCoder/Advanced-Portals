@@ -22,7 +22,7 @@ public class Lang {
 
     public final String DEFAULT_LANG = "en_GB";
 
-    public final Map<String, String> languageMap = Maps.<String, String>newHashMap();
+    public final Map<String, String> languageMap = Maps.newHashMap();
 
     public static final Lang instance = new Lang();
 
@@ -56,11 +56,16 @@ public class Lang {
 
     private Map<String, String> parseLang(InputStream inputStream){
         Scanner scanner = new Scanner(inputStream, "UTF-8");
-        getNextLine(scanner);
-        String line = scanner.nextLine();
+        String line = getNextLine(scanner);
+        Map<String, String> newMap = Maps.newHashMap();
         while(scanner != null && line != null){
-            System.out.println(line);
-
+            //System.out.println(line);
+            if(!line.startsWith("#") && line.indexOf('=') > -1){
+                int split = line.indexOf('=');
+                String key = line.substring(0, split);
+                String value = line.substring(split + 1, line.length());
+                newMap.put(key, value);
+            }
             line = getNextLine(scanner);
             // TODO add split code at the first = and also conversion of strings/codes which are constants like colors.
         }
@@ -69,7 +74,7 @@ public class Lang {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return newMap;
     }
 
     private String getNextLine(Scanner scanner) {

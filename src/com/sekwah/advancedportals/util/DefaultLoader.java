@@ -79,7 +79,7 @@ public class DefaultLoader {
      */
     public static InputStream loadResource(Lang lang, String location) {
         File inFile = new File(dataFolder, location);
-        if(inFile.exists() && inFile.isDirectory()){
+        if(inFile.exists() && !inFile.isDirectory()){
             try {
                 return new FileInputStream(inFile);
             } catch (FileNotFoundException e) {
