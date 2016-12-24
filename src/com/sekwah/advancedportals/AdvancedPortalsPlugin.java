@@ -3,6 +3,7 @@ package com.sekwah.advancedportals;
 import com.sekwah.advancedportals.compat.CraftBukkit;
 import com.sekwah.advancedportals.metrics.Metrics;
 import com.sekwah.advancedportals.util.DefaultLoader;
+import com.sekwah.advancedportals.util.Lang;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
 
         // Test for now to initialise the classes before its first use.
         // TODO load the default language from the config and add a load call to the enable.
-        //System.out.println("Translation: " + Lang.instance.translate("test.string"));
+        System.out.println("Translation: " + Lang.instance.translateColor("test.string"));
 
         try {
             Metrics metrics = new Metrics(this);

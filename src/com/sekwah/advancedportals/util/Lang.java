@@ -93,4 +93,26 @@ public class Lang {
             return s;
         }
     }
+
+    public String translateInsertVariables(String s, String... args){
+        String translation = translate(s);
+        for(int i = 0; i < args.length; i++ ){
+            translation = translation.replaceAll("%" + i + "$s", args[i]);
+        }
+        return translation;
+    }
+
+    public String translateInsertVariablesColor(String s, String... args){
+        String translation = translateColor(s);
+        for(int i = 0; i < args.length; i++ ){
+            translation = translation.replaceAll("%" + i + "$s", args[i]);
+        }
+        return translation;
+    }
+
+    public String translateColor(String s) {
+        String translation = translate(s);
+        translation = translation.replaceAll("\\\\u00A7", "\u00A7");
+        return translation;
+    }
 }
