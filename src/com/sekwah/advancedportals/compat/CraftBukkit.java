@@ -23,7 +23,7 @@ public class CraftBukkit {
 
     public CraftBukkit(AdvancedPortalsPlugin plugin, String version) throws ClassNotFoundException, NoSuchMethodException, NoSuchFieldException {
         this.plugin = plugin;
-        
+
         this.setupMessagePacket(version);
     }
 
@@ -43,7 +43,7 @@ public class CraftBukkit {
     }
 
     public void sendRawMessage(String rawMessage, Player player) {
-        this.sendMessage(rawMessage,player, (byte) 1);
+        this.sendMessage(rawMessage, player, (byte) 1);
     }
 
     public void sendActionBarMessage(String rawMessage, Player player) {
@@ -59,7 +59,7 @@ public class CraftBukkit {
      */
     public void sendMessage(String rawMessage, Player player, byte msgType) {
         try {
-            Object chatComp = this.serializeMessage.invoke(null,rawMessage); // convert string into bytes
+            Object chatComp = this.serializeMessage.invoke(null, rawMessage); // convert string into bytes
             Object packet = this.chatPacketConstructor.newInstance(chatComp, msgType); // convert bytes into packet
 
             Object handle = this.playerGetHandle.invoke(player);
@@ -75,13 +75,14 @@ public class CraftBukkit {
 
     /**
      * Find the class inside the class (as there is no raw method in java)
+     *
      * @param classObj
      * @param className
      * @return
      */
-    public Class<?> findClass(Class<?> classObj, String className){
-        for(Class<?> classes : classObj.getDeclaredClasses()){
-            if(classes.getSimpleName().equals(className)){
+    public Class<?> findClass(Class<?> classObj, String className) {
+        for (Class<?> classes : classObj.getDeclaredClasses()) {
+            if (classes.getSimpleName().equals(className)) {
                 return classes;
             }
         }

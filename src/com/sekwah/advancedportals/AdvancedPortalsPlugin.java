@@ -10,30 +10,33 @@ import java.io.IOException;
 
 /**
  * Advanced Portals plugin for minecraft. Specifically bukkit/spigot servers.
- *
+ * <p>
  * Try to keep bukkit references generally in the same files. All the registry stuff should try to not
  * use direct bukkit references unless needed for the data. This will make it easier for updating and also
  * cross branches/forks such as spigot versions.
- *
+ * <p>
  * The purpose of the new recode of this plugin is to make it efficient, more modular than the last
  * and also allow for developers to make addons to interact with plugins or server networks.
- *
+ * <p>
  * Could make a sponge port but it is not a priority for now at least.
- *
+ * <p>
  * Looking over the license but it seems the GNU is best for now. MIT seemed too vague and not specific enough.
  *
  * @author sekwah41
  */
 public class AdvancedPortalsPlugin extends JavaPlugin {
 
+    private static AdvancedPortalsPlugin instance;
     // Class which handles calls to code which is located in craftbukkit.
     public CraftBukkit compat = null;
 
-    private static AdvancedPortalsPlugin INSTANCE;
+    public static AdvancedPortalsPlugin getInstance() {
+        return instance;
+    }
 
     public void onEnable() {
 
-        this.INSTANCE = this;
+        this.instance = this;
 
         // TODO add the config loaders from default spigot and use those to save default if easier.
 
@@ -72,10 +75,6 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
 
     public void onDisable() {
         this.getServer().getConsoleSender().sendMessage("\u00A7cAdvanced portals are being disabled!");
-    }
-
-    public static AdvancedPortalsPlugin getInstance(){
-        return INSTANCE;
     }
 
 

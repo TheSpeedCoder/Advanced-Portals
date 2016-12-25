@@ -15,9 +15,9 @@ public class PortalTags {
 
     // TODO create a list or hashmap of tags to check for.
 
-    public Map<String, String> tagDesc = new HashMap<String, String>();
+    public Map<String, String> tagDesc = new HashMap();
 
-    public ArrayList<String> tags = new ArrayList<String>();
+    public ArrayList<String> tags = new ArrayList();
 
 
     public void registerTag(String tagName) {

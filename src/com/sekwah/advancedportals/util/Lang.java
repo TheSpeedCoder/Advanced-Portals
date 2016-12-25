@@ -10,57 +10,54 @@ import java.util.Scanner;
 
 /**
  * @author sekwah41
- *
- * The language translation file for the game. Will always load english first
- * so that if the translations are missing any then they are still readable and can then be translated.
- * (Its better than a raw translate string)
- *
- * TODO add a loaddefault where it only loads from the plugins version of the data rather than paying attention to any
- * possible changed versions in the lang folder.
+ *         <p>
+ *         The language translation file for the game. Will always load english first
+ *         so that if the translations are missing any then they are still readable and can then be translated.
+ *         (Its better than a raw translate string)
+ *         <p>
+ *         TODO add a loaddefault where it only loads from the plugins version of the data rather than paying attention to any
+ *         possible changed versions in the lang folder.
  */
 public class Lang {
 
-    public final String DEFAULT_LANG = "en_GB";
-
-    public final Map<String, String> languageMap = Maps.newHashMap();
-
     public static final Lang instance = new Lang();
+    public final Map<String, String> languageMap = Maps.newHashMap();
+    private final String DEFAULT_LANG = "en_GB";
 
-    public Lang(){
+    public Lang() {
         injectTranslations(this, DEFAULT_LANG);
     }
 
     private void injectTranslations(Lang lang, String fileName) {
-        try{
+        try {
             //URL url = lang.getClass().getClassLoader().getResource("lang/" + fileName + ".lang");
             //System.out.println(url);
             //Map<String, String> newLangMap = lang.parseLang(url.openStream());
             InputStream stream = DefaultLoader.loadResource(lang, "lang/" + fileName + ".lang");
-            if(stream != null){
+            if (stream != null) {
                 Map<String, String> newLangMap = lang.parseLang(stream);
-                if(newLangMap != null){
+                if (newLangMap != null) {
                     lang.languageMap.putAll(newLangMap);
                 }
             }
-        }
-        catch(NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
             AdvancedPortalsPlugin.getInstance().getLogger().warning("Could not load " + fileName + ".lang The file does" +
                     "not exist or there has been an error reading the file. Canceled loading language file.");
         }
     }
 
-    public void loadLanguage(String fileName){
+    public void loadLanguage(String fileName) {
         injectTranslations(instance, fileName);
     }
 
-    private Map<String, String> parseLang(InputStream inputStream){
+    private Map<String, String> parseLang(InputStream inputStream) {
         Scanner scanner = new Scanner(inputStream, "UTF-8");
         String line = getNextLine(scanner);
         Map<String, String> newMap = Maps.newHashMap();
-        while(scanner != null && line != null){
+        while (scanner != null && line != null) {
             //System.out.println(line);
-            if(!line.startsWith("#") && line.indexOf('=') > -1){
+            if (!line.startsWith("#") && line.indexOf('=') > -1) {
                 int split = line.indexOf('=');
                 String key = line.substring(0, split);
                 String value = line.substring(split + 1, line.length());
@@ -78,7 +75,7 @@ public class Lang {
     }
 
     private String getNextLine(Scanner scanner) {
-        if(scanner.hasNextLine()){
+        if (scanner.hasNextLine()) {
             return scanner.nextLine();
         }
         return null;
@@ -86,25 +83,24 @@ public class Lang {
 
 
     public String translate(String s) {
-        if(instance.languageMap.containsKey(s)){
+        if (instance.languageMap.containsKey(s)) {
             return instance.languageMap.get(s);
-        }
-        else{
+        } else {
             return s;
         }
     }
 
-    public String translateInsertVariables(String s, String... args){
+    public String translateInsertVariables(String s, String... args) {
         String translation = translate(s);
-        for(int i = 0; i < args.length; i++ ){
+        for (int i = 0; i < args.length; i++) {
             translation = translation.replaceAll("%" + i + "$s", args[i]);
         }
         return translation;
     }
 
-    public String translateInsertVariablesColor(String s, String... args){
+    public String translateInsertVariablesColor(String s, String... args) {
         String translation = translateColor(s);
-        for(int i = 0; i < args.length; i++ ){
+        for (int i = 0; i < args.length; i++) {
             translation = translation.replaceAll("%" + i + "$s", args[i]);
         }
         return translation;

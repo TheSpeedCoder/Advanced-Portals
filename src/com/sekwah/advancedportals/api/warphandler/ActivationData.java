@@ -18,15 +18,14 @@ public class ActivationData {
         this.activePortal = portal;
     }
 */
-    public WarpedStatus getWarped(){
+    public WarpedStatus getWarped() {
         return this.warpStatus;
     }
 
-    public void setWarpStatus(WarpedStatus warped){
-        if(this.warpStatus == WarpedStatus.WARPED){
+    public void setWarpStatus(WarpedStatus warped) {
+        if (this.warpStatus == WarpedStatus.WARPED) {
             return;
-        }
-        else if(this.warpStatus == WarpedStatus.INACTIVE){
+        } else if (this.warpStatus == WarpedStatus.INACTIVE) {
             return;
         }
         this.warpStatus = warped;
@@ -34,21 +33,22 @@ public class ActivationData {
 
     /**
      * In case you need to set the status back down a step for whatever reason. However it is not recommended.
+     *
      * @param warped
      */
-    public void setWarpStatusAbsolute(WarpedStatus warped){
+    public void setWarpStatusAbsolute(WarpedStatus warped) {
         this.warpStatus = warped;
     }
 
-    public boolean getAllowed(){
+    public boolean getAllowed() {
         return this.warpAllowed;
     }
 
-    public void setAllowed(boolean allowed){
+    public void setAllowed(boolean allowed) {
         this.warpAllowed = allowed;
     }
 
-    public enum WarpedStatus{
+    public enum WarpedStatus {
         /**
          * Player has moved or something major has happened. (only one of these should activate)
          */
