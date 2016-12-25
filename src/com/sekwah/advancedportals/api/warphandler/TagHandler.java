@@ -1,8 +1,6 @@
 package com.sekwah.advancedportals.api.warphandler;
 
-import com.sun.istack.internal.NotNull;
 import org.bukkit.entity.Player;
-
 import javax.annotation.Nullable;
 
 /**
@@ -22,7 +20,7 @@ public class TagHandler {
          * @param argData
          * @return if the portal can be created.
          */
-        boolean portalCreated(@Nullable Player player, @NotNull ActivationData activeData, @NotNull String argData);
+        boolean portalCreated(@Nullable Player player, ActivationData activeData, String argData);
 
         /**
          * Example if the player does not have access to remove the portal.
@@ -32,7 +30,7 @@ public class TagHandler {
          * @param argData
          * @return if the portal can be destroyed.
          */
-        boolean portalDestroyed(@Nullable Player player, @NotNull ActivationData activeData, @NotNull String argData);
+        boolean portalDestroyed(@Nullable Player player, ActivationData activeData, String argData);
 
     }
 
@@ -45,7 +43,7 @@ public class TagHandler {
          * @param activeData
          * @param argData
          */
-        void portalPreActivated(@NotNull Player player, @NotNull ActivationData activeData, @NotNull String argData);
+        void portalPreActivated(Player player, ActivationData activeData, String argData);
 
         /**
          * Activates after portal activation
@@ -54,7 +52,7 @@ public class TagHandler {
          * @param activeData
          * @param argData
          */
-        void portalPostActivated(@NotNull Player player, @NotNull ActivationData activeData, @NotNull String argData);
+        void portalPostActivated(Player player, ActivationData activeData, String argData);
 
         /**
          * Activates if the portal is allowed from pre
@@ -63,7 +61,7 @@ public class TagHandler {
          * @param activeData
          * @param argData
          */
-        void portalActivated(@NotNull Player player, @NotNull ActivationData activeData, @NotNull String argData);
+        void portalActivated(Player player, ActivationData activeData, String argData);
 
     }
 
@@ -77,7 +75,7 @@ public class TagHandler {
          * @param argData
          * @return if the tag will be added.
          */
-        boolean tagAdded(@Nullable Player player, @NotNull ActivationData activeData, @NotNull String argData);
+        boolean tagAdded(@Nullable Player player, ActivationData activeData, String argData);
 
         /**
          * If the user has access to remove the tag
@@ -87,7 +85,7 @@ public class TagHandler {
          * @param argData
          * @return if the tag will be removed.
          */
-        boolean ragRemoved(@Nullable Player player, @NotNull ActivationData activeData, @NotNull String argData);
+        boolean ragRemoved(@Nullable Player player, ActivationData activeData, String argData);
 
     }
 
