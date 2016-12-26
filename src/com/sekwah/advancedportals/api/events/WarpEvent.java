@@ -62,7 +62,6 @@ public final class WarpEvent extends Event implements Cancellable {
      *
      * @param warped
      */
-    @SuppressWarnings("unused")
     public void setHasWarped(boolean warped) {
         this.hasWarped = warped;
     }

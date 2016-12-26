@@ -1,4 +1,4 @@
-package com.sekwah.advancedportals.api.portaldata;
+package com.sekwah.advancedportals.api.portal;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,9 +19,10 @@ public class PortalTags {
 
     public ArrayList<String> tags = new ArrayList();
 
+    private static PortalTags instance = new PortalTags();
 
-    public void registerTag(String tagName) {
-        this.registerTag(tagName, false);
+    public static void registerTag(String tagName) {
+        instance.registerTag(tagName, false);
     }
 
     /**
@@ -31,8 +32,8 @@ public class PortalTags {
      * @param tagName
      * @param description
      */
-    public void registerTag(String tagName, boolean multiWord, String description) {
-        this.registerTag(tagName, multiWord);
+    public static void registerTag(String tagName, boolean multiWord, String description) {
+        instance.registerTag(tagName, multiWord);
     }
 
     public void registerTag(String tagName, boolean multiWord) {

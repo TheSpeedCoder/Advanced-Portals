@@ -32,7 +32,7 @@ WarpParticles: 1
 # adding more soon
 WarpSound: 1
 
-# How long after trying to enter a portal until the player can try to enter another. 0 or lower to deactivate.
+# How long after trying to enter a portal (in seconds) until the player can try to enter another. 0 or lower to deactivate.
 PortalCooldown: 5
 # How fast to throw them back, 0 or lower to disable throwback completely
 ThrowbackAmount: 0.7

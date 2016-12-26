@@ -30,12 +30,9 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
     // Class which handles calls to code which is located in craftbukkit.
     public CraftBukkit compat = null;
 
-    public static AdvancedPortalsPlugin getInstance() {
-        return instance;
-    }
-
     public void onEnable() {
 
+        // This has to be done here as to how the file is started and called.
         this.instance = this;
 
         // TODO add the config loaders from default spigot and use those to save default if easier.
@@ -77,5 +74,9 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
         this.getServer().getConsoleSender().sendMessage("\u00A7cAdvanced portals are being disabled!");
     }
 
+
+    public static AdvancedPortalsPlugin getInstance() {
+        return instance;
+    }
 
 }

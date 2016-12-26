@@ -1,4 +1,4 @@
-package com.sekwah.advancedportals.api.portaldata;
+package com.sekwah.advancedportals.api.portal;
 
 public class PortalArg {
 
