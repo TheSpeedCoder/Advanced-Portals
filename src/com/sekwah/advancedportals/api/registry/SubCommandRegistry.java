@@ -1,5 +1,7 @@
 package com.sekwah.advancedportals.api.registry;
 
+import com.sekwah.advancedportals.api.commands.SubCommand;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,6 +10,6 @@ import java.util.Map;
  */
 public class SubCommandRegistry {
 
-    public Map<String, String> subCommandMap = new HashMap();
+    public Map<String, SubCommand> subCommands = new HashMap();
 
 }

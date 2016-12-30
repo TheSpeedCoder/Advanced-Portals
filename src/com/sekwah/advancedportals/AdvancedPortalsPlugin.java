@@ -44,7 +44,7 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
 
         // Test for now to initialise the classes before its first use.
         // TODO load the default language from the config and add a load call to the enable.
-        System.out.println("Translation: " + Lang.instance.translateColor("test.string"));
+        System.out.println("Translation: " + Lang.translateColor("test.string"));
 
         try {
             Metrics metrics = new Metrics(this);
