@@ -7,7 +7,6 @@
 # So the order of variables being inserted into the string is not a set order. Just like minecraft
 #
 # For colors use \u00A7 or § (can be entered by holding alt and pressing 2 then 1 on the numpad)
-# There seems to be a bug with notepad++ sometimes where it doesn't view in UTC-8 if so don't use the symbol.
 # http://minecraft.gamepedia.com/Formatting_codes
 #
 # TODO check if the files are loaded from the config folder and if not how it does it in bukkit.

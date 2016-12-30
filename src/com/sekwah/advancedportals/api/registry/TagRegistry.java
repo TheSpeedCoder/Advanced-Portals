@@ -8,19 +8,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by on 25/07/2016.
+ *
+ * Allows a portal to register a tag and add a handler. If a plugin wants to add functionality
+ * to someone elses tag then they should use the events.
+ *
+ * TODO take a look and rewrite parts because this was written a fair bit before the rest.
  *
  * @author sekwah41
  */
 public class TagRegistry {
 
+    // May not be needed
     private ArrayList<String> tags = new ArrayList();
 
-    private Map<String, TagHandler.Activation> tagActivation = new HashMap();
+    private Map<String, TagHandler.Activation> activationHandlers = new HashMap();
 
-    private Map<String, TagHandler.Creation> tagCreation = new HashMap();
+    private Map<String, TagHandler.Creation> creationHandlers = new HashMap();
 
-    private Map<String, TagHandler.TagStatus> tagStatus = new HashMap();
+    private Map<String, TagHandler.TagStatus> statusHandlers = new HashMap();
 
     // TODO the event can be used for general data detection and management, but use a TagHandler to make it so they can register
     // the individual class to handle.
@@ -37,6 +42,7 @@ public class TagRegistry {
         }
 
         if (instance.tags.contains(tag)) {
+            AdvancedPortalsPlugin.getInstance().getLogger().warning("There can only be one handler per tag.");
             return false;
         }
 
@@ -46,13 +52,13 @@ public class TagRegistry {
                 !(tagHandler instanceof TagHandler.Creation)) {
             AdvancedPortalsPlugin.getInstance().getLogger().warning("Error with tag: " + tag + ". A tag handler must implement one of the handlers. Not just extend.");
             if (tagHandler instanceof TagHandler.Activation) {
-                instance.tagActivation.put(tag, (TagHandler.Activation) tagHandler);
+                instance.activationHandlers.put(tag, (TagHandler.Activation) tagHandler);
             }
             if (tagHandler instanceof TagHandler.TagStatus) {
-                instance.tagStatus.put(tag, (TagHandler.TagStatus) tagHandler);
+                instance.statusHandlers.put(tag, (TagHandler.TagStatus) tagHandler);
             }
             if (tagHandler instanceof TagHandler.Creation) {
-                instance.tagCreation.put(tag, (TagHandler.Creation) tagHandler);
+                instance.creationHandlers.put(tag, (TagHandler.Creation) tagHandler);
             }
         }
         return true;

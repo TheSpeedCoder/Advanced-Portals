@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by on 29/03/2016.
- * <p>
  * TODO add all the normal tags then add the extradata tags
  *
  * @author sekwah41

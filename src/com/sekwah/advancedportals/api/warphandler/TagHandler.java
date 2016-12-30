@@ -1,7 +1,7 @@
 package com.sekwah.advancedportals.api.warphandler;
 
-import com.sun.istack.internal.Nullable;
 import org.bukkit.entity.Player;
+import javax.annotation.Nullable;
 
 /**
  * Created by on 30/07/2016.
