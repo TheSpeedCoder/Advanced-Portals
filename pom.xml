@@ -2,6 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sekwah.advancedportals</groupId>
     <artifactId>Advanced-Portals</artifactId>
+    <version>0.1.0-snapshot</version>
     <build>
         <sourceDirectory>${basedir}/src/</sourceDirectory>
         <resources>
@@ -16,7 +17,6 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
     </repositories>
-    <version>0.1.0-snapshot</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
