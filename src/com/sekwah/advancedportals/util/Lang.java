@@ -20,10 +20,10 @@ import java.util.Scanner;
  */
 public class Lang {
 
-    public final Map<String, String> languageMap = Maps.newHashMap();
+    private final Map<String, String> languageMap = Maps.newHashMap();
     private final String DEFAULT_LANG = "en_GB";
 
-    public static final Lang instance = new Lang();
+    private static final Lang instance = new Lang();
 
     public Lang() {
         injectTranslations(this, DEFAULT_LANG);
