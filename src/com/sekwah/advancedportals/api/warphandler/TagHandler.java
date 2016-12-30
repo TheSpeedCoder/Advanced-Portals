@@ -1,6 +1,7 @@
 package com.sekwah.advancedportals.api.warphandler;
 
 import org.bukkit.entity.Player;
+
 import javax.annotation.Nullable;
 
 /**
