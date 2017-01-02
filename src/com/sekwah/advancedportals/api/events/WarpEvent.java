@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Trigered whenever a player activates the warp after the tags are handled.
  */
-public final class WarpEvent extends Event implements Cancellable {
+public class WarpEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
 
