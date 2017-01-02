@@ -2,7 +2,7 @@ TODO
 ================
 Main Tasks (Generally should be done in order)
 
-Tag registration system
+Tag registration system (Mostly done, just needs to be tested and implemented)
 
 Portal loading system
 

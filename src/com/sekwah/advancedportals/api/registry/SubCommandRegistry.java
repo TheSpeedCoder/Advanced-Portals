@@ -1,5 +1,6 @@
 package com.sekwah.advancedportals.api.registry;
 
+import com.sekwah.advancedportals.AdvancedPortalsPlugin;
 import com.sekwah.advancedportals.api.commands.SubCommand;
 
 import java.util.HashMap;
@@ -17,6 +18,12 @@ public class SubCommandRegistry {
      * @return if the subcommand is registered or not
      */
     public static boolean registerSubCommand(SubCommand subCommand){
+
+        if (subCommand == null) {
+            AdvancedPortalsPlugin.getInstance().getLogger().warning("A subcommand cannot be null.");
+            return false;
+        }
+
         return false;
     }
 }
