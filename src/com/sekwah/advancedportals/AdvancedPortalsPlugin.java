@@ -1,5 +1,7 @@
 package com.sekwah.advancedportals;
 
+import com.sekwah.advancedportals.commands.DestinationCommand;
+import com.sekwah.advancedportals.commands.PortalCommand;
 import com.sekwah.advancedportals.compat.CraftBukkit;
 import com.sekwah.advancedportals.metrics.Metrics;
 import com.sekwah.advancedportals.util.DefaultLoader;
@@ -42,10 +44,6 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
          */
         DefaultLoader.copyDefaultFiles(false, "config.yml", "portals.yml", "destinations.yml");
 
-        // Test for now to initialise the classes before its first use.
-        // TODO load the default language from the config and add a load call to the enable.
-        System.out.println("Translation: " + Lang.translateColor("test.string"));
-
         try {
             Metrics metrics = new Metrics(this);
             metrics.start();
@@ -61,17 +59,20 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
             this.compat = new CraftBukkit(this, version);
         } catch (ClassNotFoundException | NoSuchMethodException | NoSuchFieldException e) {
             e.printStackTrace();
-            this.getLogger().warning("This version of craftbukkit is not yet supported or something went wrong, please" +
-                    " post this message with the version number and the above stacktrace in an issue on GitHub v:" + version);
+            this.getLogger().warning(Lang.translateInsertVariables("logger.plugincrafterr", version));
             this.getLogger().warning("https://github.com/sekwah41/Advanced-Portals/issues");
             this.setEnabled(false);
         }
 
-        this.getServer().getConsoleSender().sendMessage("\u00A7aAdvanced portals have been successfully enabled!");
+        // Construct commands
+        this.getCommand("command").setExecutor(new DestinationCommand(this));
+        this.getCommand("command").setExecutor(new PortalCommand(this));
+
+        this.getServer().getConsoleSender().sendMessage(Lang.translateColor("logger.pluginenable"));
     }
 
     public void onDisable() {
-        this.getServer().getConsoleSender().sendMessage("\u00A7cAdvanced portals are being disabled!");
+        this.getServer().getConsoleSender().sendMessage(Lang.translateColor("logger.plugindisable"));
     }
 
 

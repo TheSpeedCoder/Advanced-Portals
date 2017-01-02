@@ -93,7 +93,7 @@ public class Lang {
 
     public static String translateInsertVariables(String s, String... args) {
         String translation = instance.translate(s);
-        for (int i = 0; i < args.length; i++) {
+        for (int i = 1; i <= args.length; i++) {
             translation = translation.replaceAll("%" + i + "$s", args[i]);
         }
         return translation;
@@ -101,7 +101,7 @@ public class Lang {
 
     public static String translateInsertVariablesColor(String s, String... args) {
         String translation = instance.translateColor(s);
-        for (int i = 0; i < args.length; i++) {
+        for (int i = 1; i <= args.length; i++) {
             translation = translation.replaceAll("%" + i + "$s", args[i]);
         }
         return translation;
