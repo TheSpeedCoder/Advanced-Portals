@@ -17,9 +17,16 @@ public interface WarpEffect {
 
     void onWarp(Player player, Location loc, Action action, Portal portal);
 
+    Type getType();
+
     enum Action {
         ENTER,
         EXIT;
+    }
+
+    enum Type {
+        SOUND,
+        VISUAL;
     }
 
 }

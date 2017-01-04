@@ -28,6 +28,13 @@ public class TagRegistry {
     private Map<String, TagHandler.Creation> creationHandlers = new HashMap();
     private Map<String, TagHandler.TagStatus> statusHandlers = new HashMap();
 
+    /**
+     *
+     * @param tag
+     * @param desc
+     * @param tagHandler
+     * @return if the tag was registered
+     */
     public static boolean registerTag(String tag, String desc, TagHandler tagHandler) {
         if (registerTag(tag, tagHandler)) {
             instance.tagDesc.put(tag, desc);
@@ -41,15 +48,17 @@ public class TagRegistry {
      * if needed such as extra data for a tag then this is here.
      *
      * @param tag
-     * @return
+     * @return if the tag was registered
      */
     public static boolean registerTag(String tag) {
         if (tag.contains(" ")) {
-            AdvancedPortalsPlugin.getInstance().getLogger().warning("The tag '" + tag + "' is invalid as it contains spaces.");
+            AdvancedPortalsPlugin.getInstance().getLogger().warning("The tag '"
+                    + tag + "' is invalid as it contains spaces.");
             return false;
         }
         if (instance.tags.contains(tag)) {
-            AdvancedPortalsPlugin.getInstance().getLogger().warning("The tag " + tag + " has already been registered.");
+            AdvancedPortalsPlugin.getInstance().getLogger().warning("The tag "
+                    + tag + " has already been registered.");
             return false;
         }
         instance.tags.add(tag);
@@ -61,7 +70,7 @@ public class TagRegistry {
      *
      * @param tag  Tag to be used on command line
      * @param desc
-     * @return
+     * @return if the tag was registered
      */
     public static boolean registerTag(String tag, String desc) {
         if (registerTag(tag)) {
