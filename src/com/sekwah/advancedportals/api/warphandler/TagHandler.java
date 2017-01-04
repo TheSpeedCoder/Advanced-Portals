@@ -16,7 +16,7 @@ public class TagHandler {
         /**
          * Example if the player does not have access to use a tag on the portal.
          *
-         * @param player if null the portal has been created by the server or a plugin
+         * @param player     if null the portal has been created by the server or a plugin
          * @param activeData
          * @param argData
          * @return if the portal can be created.
@@ -26,7 +26,7 @@ public class TagHandler {
         /**
          * Example if the player does not have access to remove the portal.
          *
-         * @param player if null the portal has been destroyed by the server or a plugin
+         * @param player     if null the portal has been destroyed by the server or a plugin
          * @param activeData
          * @param argData
          * @return if the portal can be destroyed.

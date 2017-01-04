@@ -32,6 +32,10 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
     // Class which handles calls to code which is located in craftbukkit.
     public CraftBukkit compat = null;
 
+    public static AdvancedPortalsPlugin getInstance() {
+        return instance;
+    }
+
     public void onEnable() {
 
         // This has to be done here as to how the file is started and called.
@@ -73,11 +77,6 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
 
     public void onDisable() {
         this.getServer().getConsoleSender().sendMessage(Lang.translateColor("logger.plugindisable"));
-    }
-
-
-    public static AdvancedPortalsPlugin getInstance() {
-        return instance;
     }
 
 }

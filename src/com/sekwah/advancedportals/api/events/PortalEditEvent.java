@@ -7,15 +7,15 @@ package com.sekwah.advancedportals.api.events;
  */
 public class PortalEditEvent {
 
-    public class TagChange{
+    public class TagChange {
 
     }
 
-    public class Renamed{
+    public class Renamed {
 
     }
 
-    public class Moved{
+    public class Moved {
 
     }
 }

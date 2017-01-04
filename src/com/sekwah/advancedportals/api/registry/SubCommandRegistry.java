@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Do not register to here. Register to the sprcific subcommand registry classes.
+ * <p>
+ * Designed to let addons add new command sections to access, edit or add new functonality.
+ *
  * @author sekwah41
  */
 public class SubCommandRegistry {
@@ -17,7 +21,7 @@ public class SubCommandRegistry {
      * @param subCommand
      * @return if the subcommand is registered or not
      */
-    public static boolean registerSubCommand(SubCommand subCommand){
+    public static boolean registerSubCommand(SubCommand subCommand) {
 
         if (subCommand == null) {
             AdvancedPortalsPlugin.getInstance().getLogger().warning("A subcommand cannot be null.");

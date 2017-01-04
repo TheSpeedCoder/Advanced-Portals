@@ -20,13 +20,46 @@ import java.util.Scanner;
  */
 public class Lang {
 
+    private static final Lang instance = new Lang();
     private final Map<String, String> languageMap = Maps.newHashMap();
     private final String DEFAULT_LANG = "en_GB";
 
-    private static final Lang instance = new Lang();
-
     public Lang() {
         injectTranslations(this, DEFAULT_LANG);
+    }
+
+    public static void loadLanguage(String fileName) {
+        instance.injectTranslations(instance, fileName);
+    }
+
+    public static String translate(String s) {
+        if (instance.languageMap.containsKey(s)) {
+            return instance.languageMap.get(s);
+        } else {
+            return s;
+        }
+    }
+
+    public static String translateInsertVariables(String s, String... args) {
+        String translation = instance.translate(s);
+        for (int i = 1; i <= args.length; i++) {
+            translation = translation.replaceAll("%" + i + "$s", args[i]);
+        }
+        return translation;
+    }
+
+    public static String translateInsertVariablesColor(String s, String... args) {
+        String translation = instance.translateColor(s);
+        for (int i = 1; i <= args.length; i++) {
+            translation = translation.replaceAll("%" + i + "$s", args[i]);
+        }
+        return translation;
+    }
+
+    public static String translateColor(String s) {
+        String translation = instance.translate(s);
+        translation = translation.replaceAll("\\\\u00A7", "\u00A7");
+        return translation;
     }
 
     private void injectTranslations(Lang lang, String fileName) {
@@ -46,10 +79,6 @@ public class Lang {
             AdvancedPortalsPlugin.getInstance().getLogger().warning("Could not load " + fileName + ".lang The file does" +
                     "not exist or there has been an error reading the file. Canceled loading language file.");
         }
-    }
-
-    public static void loadLanguage(String fileName) {
-        instance.injectTranslations(instance, fileName);
     }
 
     private Map<String, String> parseLang(InputStream inputStream) {
@@ -80,36 +109,5 @@ public class Lang {
             return scanner.nextLine();
         }
         return null;
-    }
-
-
-    public static String translate(String s) {
-        if (instance.languageMap.containsKey(s)) {
-            return instance.languageMap.get(s);
-        } else {
-            return s;
-        }
-    }
-
-    public static String translateInsertVariables(String s, String... args) {
-        String translation = instance.translate(s);
-        for (int i = 1; i <= args.length; i++) {
-            translation = translation.replaceAll("%" + i + "$s", args[i]);
-        }
-        return translation;
-    }
-
-    public static String translateInsertVariablesColor(String s, String... args) {
-        String translation = instance.translateColor(s);
-        for (int i = 1; i <= args.length; i++) {
-            translation = translation.replaceAll("%" + i + "$s", args[i]);
-        }
-        return translation;
-    }
-
-    public static String translateColor(String s) {
-        String translation = instance.translate(s);
-        translation = translation.replaceAll("\\\\u00A7", "\u00A7");
-        return translation;
     }
 }

@@ -14,41 +14,38 @@ import java.util.HashMap;
 public class PortalManager {
 
     /**
+     * Cooldown time for players to try entering portals.
+     */
+    private static final int COOLDOWN = 0;
+    private static PortalManager instance = new PortalManager();
+    /**
      * Store data of when the player last entered the portal
      */
     private HashMap<Player, Long> lastAttempt = new HashMap();
-
     /**
      * Tracks what portal a player has selected
      */
     private HashMap<Player, Portal> selectedPortal = new HashMap();
-
     private AdvancedPortalsPlugin plugin;
 
-    private static PortalManager instance = new PortalManager();
+    public PortalManager() {
+        this.loadPortals();
+    }
 
     /**
-     * Cooldown time for players to try entering portals.
+     * A player has left the server
+     *
+     * @param player
      */
-    private static final int COOLDOWN = 0;
-
-    public PortalManager(){
-        this.loadPortals();
+    public static void playerLeave(Player player) {
+        instance.lastAttempt.remove(player);
+        instance.selectedPortal.remove(player);
     }
 
     /**
      * Load the default data into the portals.
      */
-    private void loadPortals(){
+    private void loadPortals() {
 
-    }
-
-    /**
-     * A player has left the server
-     * @param player
-     */
-    public static void playerLeave(Player player){
-        instance.lastAttempt.remove(player);
-        instance.selectedPortal.remove(player);
     }
 }

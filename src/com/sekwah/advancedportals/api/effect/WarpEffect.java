@@ -6,20 +6,20 @@ import org.bukkit.entity.Player;
 
 /**
  * Effects to be registered to the list.
- *
+ * <p>
  * Fires once at each end.
- *
+ * <p>
  * Can be a Visual effect or a Sound. Just register to the correct one
  *
  * @author sekwah41
  */
 public interface WarpEffect {
 
-    enum Action{
+    void onWarp(Player player, Location loc, Action action, Portal portal);
+
+    enum Action {
         ENTER,
         EXIT;
     }
-
-    void onWarp(Player player, Location loc, Action action, Portal portal);
 
 }

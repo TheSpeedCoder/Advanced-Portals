@@ -8,5 +8,4 @@ package com.sekwah.advancedportals.api.registry;
 public class PortalSubCommandRegistry extends SubCommandRegistry {
 
 
-
 }
