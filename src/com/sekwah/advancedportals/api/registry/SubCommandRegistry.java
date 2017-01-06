@@ -3,6 +3,8 @@ package com.sekwah.advancedportals.api.registry;
 import com.sekwah.advancedportals.AdvancedPortalsPlugin;
 import com.sekwah.advancedportals.api.commands.SubCommand;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,9 +17,14 @@ import java.util.Map;
  */
 public class SubCommandRegistry {
 
-    private Map<String, SubCommand> subCommands = new HashMap();
+    private Map<String, SubCommand> subCommandMap = new HashMap<>();
 
     private static final SubCommandRegistry instance = new SubCommandRegistry();
+
+    /**
+     * List of subcommand names which should be in order alphabetically
+     */
+    private ArrayList<String> subCommands = new ArrayList<>();
 
     /**
      * @param arg argument needed to activate
@@ -31,17 +38,46 @@ public class SubCommandRegistry {
             return false;
         }
 
-        if(!instance.subCommands.containsKey(arg)){
+        if(!instance.subCommandMap.containsKey(arg)){
             AdvancedPortalsPlugin.logWarning("The subcommand '" + arg + "' already exists.");
             return false;
         }
 
-        return false;
+        instance.subCommandMap.put(arg, subCommand);
+
+        instance.subCommands.add(arg);
+
+        Collections.sort(instance.subCommands);
+
+        return true;
     }
 
-    public static SubCommand getSubCommand(String name){
-        if(instance.subCommands.containsKey(name)){
-            return instance.subCommands.get(name);
+    /**
+     * @return a list of arguments of registered subcommands
+     */
+    public static ArrayList<String> getSubCommands(){
+        return instance.subCommands;
+    }
+
+    /**
+     * I may be wrong but for larger lists containsKey is faster with a hashmap than arraylist.
+     *
+     * Though im not sure at what size it becomes more efficient.
+     * @param arg
+     * @return if the argument is registered
+     */
+    public static boolean isArgRegistered(String arg){
+        return instance.subCommandMap.containsKey(arg);
+    }
+
+    /**
+     * Gets the subcommand corresponding to the string argument
+     * @param arg
+     * @return the subcommand linked to the arg
+     */
+    public static SubCommand getSubCommand(String arg){
+        if(instance.subCommandMap.containsKey(arg)){
+            return instance.subCommandMap.get(arg);
         }
         return null;
     }

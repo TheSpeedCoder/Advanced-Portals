@@ -4,6 +4,7 @@ import com.sekwah.advancedportals.AdvancedPortalsPlugin;
 import com.sekwah.advancedportals.api.warphandler.TagHandler;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +19,10 @@ public class TagRegistry {
     // TODO the event can be used for general data detection and management, but use a TagHandler to make it so they can register
     // the individual class to handle.
     private static TagRegistry instance = new TagRegistry();
-    // May not be needed
+
+    /**
+     * List of tag names which should be in order alphabetically
+     */
     private ArrayList<String> tags = new ArrayList();
     /**
      * Description of tags for help commands
@@ -62,6 +66,7 @@ public class TagRegistry {
             return false;
         }
         instance.tags.add(tag);
+        Collections.sort(instance.tags);
         return true;
     }
 
@@ -78,6 +83,10 @@ public class TagRegistry {
             return true;
         }
         return false;
+    }
+
+    public static boolean isTagRegistered(String tag){
+        return instance.tagDesc.containsKey(tag);
     }
 
     /**
