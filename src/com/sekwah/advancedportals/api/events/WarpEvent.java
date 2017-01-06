@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
  */
 public class WarpEvent extends Event implements Cancellable {
 
-    private static final HandlerList handlers = new HandlerList();
+    private static HandlerList handlers = new HandlerList();
 
     private boolean cancelled = false;
 

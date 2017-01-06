@@ -158,7 +158,7 @@ public class Metrics {
     }
 
     /**
-     * Appends a json encoded key/value pair to the given string builder.
+     * Appends a json encoded key/VALUE pair to the given string builder.
      *
      * @param json
      * @param key
@@ -709,11 +709,11 @@ public class Metrics {
         }
 
         /**
-         * Get the current value for the plotted point. Since this function defers to an external function it may or may
+         * Get the current VALUE for the plotted point. Since this function defers to an external function it may or may
          * not return immediately thus cannot be guaranteed to be thread friendly or safe. This function can be called
          * from any thread so care should be taken when accessing resources that need to be synchronized.
          *
-         * @return the current value for the point to be plotted.
+         * @return the current VALUE for the point to be plotted.
          */
         public abstract int getValue();
 

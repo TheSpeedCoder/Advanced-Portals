@@ -79,4 +79,8 @@ public class AdvancedPortalsPlugin extends JavaPlugin {
         this.getServer().getConsoleSender().sendMessage(Lang.translateColor("logger.plugindisable"));
     }
 
+    public static void logWarning(String warning){
+        instance.getLogger().warning(warning);
+    }
+
 }

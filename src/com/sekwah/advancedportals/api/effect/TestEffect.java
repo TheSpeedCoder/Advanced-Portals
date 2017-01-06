@@ -13,4 +13,9 @@ public class TestEffect implements WarpEffect {
     public void onWarp(Player player, Location loc, Action action, Portal portal) {
 
     }
+
+    @Override
+    public Type getType() {
+        return null;
+    }
 }

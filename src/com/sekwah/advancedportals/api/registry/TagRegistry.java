@@ -52,12 +52,12 @@ public class TagRegistry {
      */
     public static boolean registerTag(String tag) {
         if (tag.contains(" ")) {
-            AdvancedPortalsPlugin.getInstance().getLogger().warning("The tag '"
+            AdvancedPortalsPlugin.logWarning("The tag '"
                     + tag + "' is invalid as it contains spaces.");
             return false;
         }
         if (instance.tags.contains(tag)) {
-            AdvancedPortalsPlugin.getInstance().getLogger().warning("The tag "
+            AdvancedPortalsPlugin.logWarning("The tag "
                     + tag + " has already been registered.");
             return false;
         }
@@ -86,7 +86,7 @@ public class TagRegistry {
     public static boolean registerTag(String tag, TagHandler tagHandler) {
 
         if (tag == null) {
-            AdvancedPortalsPlugin.getInstance().getLogger().warning("A tag cannot be null.");
+            AdvancedPortalsPlugin.logWarning("A tag cannot be null.");
             return false;
         }
 
@@ -96,7 +96,7 @@ public class TagRegistry {
 
         if (tagHandler != null && !(tagHandler instanceof TagHandler.Activation) && !(tagHandler instanceof TagHandler.TagStatus) &&
                 !(tagHandler instanceof TagHandler.Creation)) {
-            AdvancedPortalsPlugin.getInstance().getLogger().warning("Error with tag: " + tag + ". A tag handler must implement one of the handlers. Not just extend.");
+            AdvancedPortalsPlugin.logWarning("Error with tag: " + tag + ". A tag handler must implement one of the handlers. Not just extend.");
             if (tagHandler instanceof TagHandler.Activation) {
                 instance.activationHandlers.put(tag, (TagHandler.Activation) tagHandler);
             }

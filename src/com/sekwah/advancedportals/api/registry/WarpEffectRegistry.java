@@ -16,7 +16,7 @@ public class WarpEffectRegistry {
 
     private Map<String, WarpEffect> soundEffects = new HashMap();
 
-    private static WarpEffectRegistry instance = new WarpEffectRegistry();
+    private static final WarpEffectRegistry instance = new WarpEffectRegistry();
 
     /**
      * Register a new warp effect.
@@ -38,7 +38,7 @@ public class WarpEffectRegistry {
                 list = instance.visualEffects;
                 break;
             default:
-                AdvancedPortalsPlugin.getInstance().getLogger().warning(effect.getType().toString()
+                AdvancedPortalsPlugin.logWarning(effect.getType().toString()
                         + " effect type not recognised");
                 return false;
         }
@@ -59,15 +59,15 @@ public class WarpEffectRegistry {
                 list = instance.visualEffects;
                 break;
             default:
-                AdvancedPortalsPlugin.getInstance().getLogger().warning(type.toString()
+                AdvancedPortalsPlugin.logWarning(type.toString()
                         + " effect type not recognised");
                 return null;
         }
-        if(list.containsKey(name)){
+        if(list.containsKey(name)) {
             return list.get(name);
         }
         else{
-            AdvancedPortalsPlugin.getInstance().getLogger().warning("No effect of type:"
+            AdvancedPortalsPlugin.logWarning("No effect of type:"
                     + type.toString() + " was registered with the name: " + name);
             return null;
         }

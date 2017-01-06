@@ -56,15 +56,15 @@ public class DefaultLoader {
                 outStream.close();
             } catch (NullPointerException e) {
                 e.printStackTrace();
-                AdvancedPortalsPlugin.getInstance().getLogger().warning("Could not load " + fileLoc + ". The file does" +
+                AdvancedPortalsPlugin.logWarning("Could not load " + fileLoc + ". The file does" +
                         "not exist or there has been an error reading the file.");
                 return false;
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                AdvancedPortalsPlugin.getInstance().getLogger().warning("Could not create " + fileLoc);
+                AdvancedPortalsPlugin.logWarning("Could not create " + fileLoc);
             } catch (IOException e) {
                 e.printStackTrace();
-                AdvancedPortalsPlugin.getInstance().getLogger().warning("File error reading " + fileLoc);
+                AdvancedPortalsPlugin.logWarning("File error reading " + fileLoc);
             }
         }
         return true;
@@ -94,7 +94,7 @@ public class DefaultLoader {
                 return lang.getClass().getClassLoader().getResourceAsStream(location);
             } catch (NullPointerException e) {
                 e.printStackTrace();
-                AdvancedPortalsPlugin.getInstance().getLogger().warning("Could not load " + location + ". The file does" +
+                AdvancedPortalsPlugin.logWarning("Could not load " + location + ". The file does" +
                         "not exist or there has been an error reading the file.");
                 return null;
             }

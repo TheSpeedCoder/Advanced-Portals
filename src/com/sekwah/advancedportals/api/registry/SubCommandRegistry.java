@@ -15,19 +15,34 @@ import java.util.Map;
  */
 public class SubCommandRegistry {
 
-    protected Map<String, SubCommand> subCommands = new HashMap();
+    private Map<String, SubCommand> subCommands = new HashMap();
+
+    private static final SubCommandRegistry instance = new SubCommandRegistry();
 
     /**
+     * @param arg argument needed to activate
      * @param subCommand
      * @return if the subcommand is registered or not
      */
-    public static boolean registerSubCommand(SubCommand subCommand) {
+    public static boolean registerSubCommand(String arg, SubCommand subCommand) {
 
         if (subCommand == null) {
-            AdvancedPortalsPlugin.getInstance().getLogger().warning("A subcommand cannot be null.");
+            AdvancedPortalsPlugin.logWarning("The subcommand '" + arg + "' cannot be null.");
+            return false;
+        }
+
+        if(!instance.subCommands.containsKey(arg)){
+            AdvancedPortalsPlugin.logWarning("The subcommand '" + arg + "' already exists.");
             return false;
         }
 
         return false;
+    }
+
+    public static SubCommand getSubCommand(String name){
+        if(instance.subCommands.containsKey(name)){
+            return instance.subCommands.get(name);
+        }
+        return null;
     }
 }

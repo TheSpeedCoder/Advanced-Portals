@@ -36,8 +36,11 @@
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
             <version>3.0.0</version>
+            <scope>provided</scope>
         </dependency>
-        <!--<dependency>
+        <!--If you are testing new features and arnt using reflection use this with the specific version numbers
+        and compile with the buildtools using 'java -jar BuildTools.jar - -rev 1.10.2' (remove space in - -)
+        <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
             <version>1.10.2-R0.1-SNAPSHOT</version>
