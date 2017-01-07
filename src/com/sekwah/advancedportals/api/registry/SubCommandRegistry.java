@@ -43,9 +43,9 @@ public class SubCommandRegistry {
             return false;
         }
 
-        instance.subCommandMap.put(arg, subCommand);
+        instance.subCommandMap.put(arg.toLowerCase(), subCommand);
 
-        instance.subCommands.add(arg);
+        instance.subCommands.add(arg.toLowerCase());
 
         Collections.sort(instance.subCommands);
 
@@ -67,7 +67,7 @@ public class SubCommandRegistry {
      * @return if the argument is registered
      */
     public static boolean isArgRegistered(String arg){
-        return instance.subCommandMap.containsKey(arg);
+        return instance.subCommandMap.containsKey(arg.toLowerCase());
     }
 
     /**
@@ -76,8 +76,8 @@ public class SubCommandRegistry {
      * @return the subcommand linked to the arg
      */
     public static SubCommand getSubCommand(String arg){
-        if(instance.subCommandMap.containsKey(arg)){
-            return instance.subCommandMap.get(arg);
+        if(instance.subCommandMap.containsKey(arg.toLowerCase())){
+            return instance.subCommandMap.get(arg.toLowerCase());
         }
         return null;
     }

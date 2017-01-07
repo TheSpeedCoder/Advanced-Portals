@@ -13,17 +13,19 @@ public interface SubCommand {
 
     /**
      * @param sender
-     * @param args   arguments including the subcommand that has been specified.
+     * @param args arguments including the subcommand that has been specified.
      * @return if the command has worked (if false it will just display a message from the command suggesting to check help)
      */
     boolean onCommand(CommandSender sender, String[] args);
 
     /**
      *
+     *
+     * @param sender
      * @param args arguments including the subcommand that has been specified.
      * @return tab completion for the subcommand
      */
-    List<String> onTabComplete(String[] args);
+    List<String> onTabComplete(CommandSender sender, String[] args);
 
     /**
      * @return the string to show on the above help menu. (describing the subcommand)
