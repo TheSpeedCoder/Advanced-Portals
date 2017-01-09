@@ -35,7 +35,6 @@ public class PortalCommand implements CommandExecutor, TabCompleter {
                             // TODO add mesasge for something being wrong with command.
                         }
                     }
-
                 }
                 else{
                     // TODO add message for invalud argument
