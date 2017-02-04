@@ -11,6 +11,16 @@ import javax.annotation.Nullable;
  */
 public class TagHandler {
 
+    /**
+     * When the user wants to activate the tag, not all will support this of course. its just a _ before or after the tag
+     * to specify
+     */
+    public enum ActivatePref{
+        BEFORE,
+        AFTER,
+        DEFAULT;
+    }
+
     public interface Creation {
 
         /**
